@@ -24,3 +24,4 @@ dist-ssr
 *.sw?
 
 prisma/migrations
+prisma/dev.db*
