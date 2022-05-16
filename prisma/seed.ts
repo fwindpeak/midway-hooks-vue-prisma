@@ -1,6 +1,6 @@
-import { PrismaClient, Prisma } from '@prisma/client';
+import { PrismaClient, Prisma } from '@prisma/client'
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient()
 
 const userData: Prisma.UserCreateInput[] = [
   {
@@ -11,10 +11,10 @@ const userData: Prisma.UserCreateInput[] = [
         {
           title: 'Join the Prisma Slack',
           content: 'https://slack.prisma.io',
-          published: true,
-        },
-      ],
-    },
+          published: true
+        }
+      ]
+    }
   },
   {
     name: 'Nilu',
@@ -24,10 +24,10 @@ const userData: Prisma.UserCreateInput[] = [
         {
           title: 'Follow Prisma on Twitter',
           content: 'https://www.twitter.com/prisma',
-          published: true,
-        },
-      ],
-    },
+          published: true
+        }
+      ]
+    }
   },
   {
     name: 'Mahmoud',
@@ -37,33 +37,37 @@ const userData: Prisma.UserCreateInput[] = [
         {
           title: 'Ask a question about Prisma on GitHub',
           content: 'https://www.github.com/prisma/prisma/discussions',
-          published: true,
+          published: true
         },
         {
           title: 'Prisma on YouTube',
-          content: 'https://pris.ly/youtube',
-        },
-      ],
-    },
-  },
-];
+          content: 'https://pris.ly/youtube'
+        }
+      ]
+    }
+  }
+]
 
 async function main() {
-  console.log(`Start seeding ...`);
+  console.log(`Start seeding ...`)
   for (const u of userData) {
-    const user = await prisma.user.create({
-      data: u,
-    });
-    console.log(`Created user with id: ${user.id}`);
+    try {
+      const user = await prisma.user.create({
+        data: u
+      })
+      console.log(`Created user with id: ${user.id}`)
+    } catch (e) {
+      console.log(e)
+    }
   }
-  console.log(`Seeding finished.`);
+  console.log(`Seeding finished.`)
 }
 
 main()
   .catch((e) => {
-    console.error(e);
-    process.exit(1);
+    console.error(e)
+    process.exit(1)
   })
   .finally(async () => {
-    await prisma.$disconnect();
-  });
+    await prisma.$disconnect()
+  })

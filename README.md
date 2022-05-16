@@ -7,19 +7,11 @@ demo
 ## Init
 
 ```sh
-yarn
-yarn db-init
-yarn dev
+pnpm
+pnpm db:init
+pnpm db:seed
+pnpm dev
 ```
-
-**如果`prisma seed`运行失败，可以手动运行`ts-node prisma/seed.ts`**
-
-## Commands
-
-- `npm run dev`: Starts the development server
-- `npm run build`: Builds the application for production
-- `npm run start`: Runs the application in production mode
-- `npm run db-init`: Init database
 
 ## File Structure
 
